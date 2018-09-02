@@ -42,4 +42,10 @@ raise Error('Here is a multine error message '
     
  - Links you need to check out:
  
-    - docs.djangoproject.com/en/1.11/internals/.
+    - [docs.djangoproject.com/en/2.0/internals/](https://docs.djangoproject.com/en/2.0/internals/).
+    - https://github.com/standard/standard.
+    - https://github.com/rwaldron/idiomatic.js/.
+    - https://github.com/airbnb/javascript.
+    - http://codeguide.co/.
+    - https://github.com/necolas/idiomatic-css.
+    
