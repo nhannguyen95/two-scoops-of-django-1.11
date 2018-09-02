@@ -1,0 +1,1 @@
+- Working with Docker is sort of like developing inside of a VM, except more lightweight.
