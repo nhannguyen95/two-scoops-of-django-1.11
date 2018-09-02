@@ -28,9 +28,9 @@
 
 - For those with a more comprehensive understanding of virtualenvwrapper, another alternative is to set DJANGO_SETTINGS_MODULE and PYTHONPATH in the postactivate script and unset them in the postdeactivate script. Then, once the virtualenv is activated, you can just type python from anywhere and import those values into your project. This also means that typing django-admin.py at the command-line works without the -- settings option.
 
-- Sometimes we’re working on a large project where different developers need different settings, and sharing the same local.py settings module with teammates won’t do:
+- Sometimes we’re working on a large project where different developers need different settings, and sharing the same local.py settings module with teammates won’t do (and keep them in version control as well):
 ```
-settings/local_nhannguyen.py
+// settings/local_nhannguyen.py
 
 from .local import *
 ```
