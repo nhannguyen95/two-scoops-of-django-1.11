@@ -70,7 +70,7 @@ unset VARIABLE_NAME
   - local.txt
   - staging.txt
   - production.txt
-  _ (ci.txt)
+  - (ci.txt)
   
 ```
 // requirements/local.txt
