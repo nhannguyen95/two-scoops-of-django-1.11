@@ -35,5 +35,55 @@
 from .local import *
 ```
   
+- In Unix, an environment variable that is changed in a script or compiled program will only affect that process and possibly child processes. The parent process and any unrelated processes will not be affected. Similarly, changing or removing a variable's value inside a DOS batch file will change the variable for the duration of COMMAND.COM's existence.
+
+- In Unix, the environment variables are normally initialized during system startup by the system init scripts, and hence inherited by all other processes in the system. Users can, and often do, augment them in the profile script for the command shell they are using. In Microsoft Windows, each environment variable's default value is stored in the Windows registry or set in the AUTOEXEC.BAT file.
+
+- Environment variables are local to the process in which they were set. If two shell processes are spawned and the value of an environment variable is changed in one, that change will not be seen by the other.
+
+- When a child process is created, it inherits all the environment variables and their values from the parent process.
+
+- On Mac and many Linux distributions that use bash for the shell, one can add lines like the following to the end of a .bashrc, .bash_profile, or .profile. When dealing with multiple projects using the same API but with di erent keys, you can also place these at the end of your virtualenv’s bin/postactivate script:
+
+```
+export VARIABLE_NAME=VALUE
+```
+
+- When you set an environment variable via the commands listed above it will remain in existence within that terminal shell until it is unset or the shell is ended. This means that even if you deactivate a virtualenv, the environment variable remains.
+
+```
+unset VARIABLE_NAME
+```
+
+- If you are using virtualenvwrapper and want to unset environment variables whenever a virtualenv is deactivated, place these commands in the postdeactivate script.
+
+- Normally you should not import ANYTHING from Django directly into your settings, but ImproperlyConfigured is an exception.
+
+- manage.py is automatically created in each Django project. manage.py does the same thing as django-admin but takes care of a few things for you:
+  - It puts your project’s package on sys.path.
+  - It sets the DJANGO_SETTINGS_MODULE environment variable so that it points to your project’s settings.py file.
+  
+- Generally, when working on a single Django project, it’s easier to use manage.py than django-admin. If you need to switch between multiple Django settings files, use django-admin with DJANGO_SETTINGS_MODULE or the --settings command line option.
+
+- It’s good practice for each settings file to have its own corresponding requirements file. This means we’re only installing what is required on each server:
+  - base.txt
+  - local.txt
+  - staging.txt
+  - production.txt
+  _ (ci.txt)
+  
+```
+// requirements/local.txt
+
+-r base.txt  # includes the base.txt requirements file
+
+coverage==4.2
+```
+
+- If you want to know how things in your project differ from Django’s defaults, use the diffsettings management command.
+
 - Additional links:
   - [slideshare.net/ jacobian/the-best-and-worst-of-django](https://www.slideshare.net/jacobian/the-best-and-worst-of-django/17-Theeverythingisa_antipattern).
+  - [https://en.wikipedia.org/wiki/Environment_variable](https://en.wikipedia.org/wiki/Environment_variable).
+  - Packages for Settings Management [github.com/joke2k/django-environ](https://github.com/joke2k/django-environ) (Used in Cookiecutter Django).
+  
