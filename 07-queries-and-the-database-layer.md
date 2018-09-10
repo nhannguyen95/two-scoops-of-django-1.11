@@ -10,7 +10,7 @@
   - **Pickling/Caching**
   - **repr()**
   - **len()**: much more efficient to use Count()
-  - **list()**: `entry_list = list(Entry.objects.all())
+  - **list()**: `entry_list = list(Entry.objects.all())`
   - **book()**: Testing a QuerySet in a boolean context, such as using book(), or, and, or and if statement: `if Entry.objects.filter(..)`
 
 - With complex queries, attempt to avoid chaining too much functionality on a small set of lines. Instead of being forced to chain many methods and advanced database features on a single line, we can break them up over as many lines as needed. This increases readability, which improves the ease of maintenance.
