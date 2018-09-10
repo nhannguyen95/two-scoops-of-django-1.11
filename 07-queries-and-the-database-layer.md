@@ -4,7 +4,14 @@
   
 - ObjectDoesNotExist can be applied to any model object, whereas Model.DoesNotExist is for a specific model.
 
-- QuerySets are lazy – the act of creating a QuerySet doesn’t involve any database activity. You can stack filters together all day long, and Django won’t actually run the query until the QuerySet is evaluated: [When QuerySets are evaluated](https://docs.djangoproject.com/en/2.1/ref/models/querysets/#when-querysets-are-evaluated).
+- [**QuerySets are lazy**](https://docs.djangoproject.com/en/1.11/topics/db/queries/#querysets-are-lazy) – the act of creating a QuerySet doesn’t involve any database activity. You can stack filters together all day long, and Django won’t actually run the query until the QuerySet is evaluated: [**When QuerySets are evaluated**](https://docs.djangoproject.com/en/2.1/ref/models/querysets/#when-querysets-are-evaluated):
+  - **Iteration**: `for e in Entry.objects.all()`
+  - **Slicing** (if you use the "step" parameter)
+  - **Pickling/Caching**
+  - **repr()**
+  - **len()**: much more efficient to use Count()
+  - **list()**: `entry_list = list(Entry.objects.all())
+  - **book()**: Testing a QuerySet in a boolean context, such as using book(), or, and, or and if statement: `if Entry.objects.filter(..)`
 
 - With complex queries, attempt to avoid chaining too much functionality on a small set of lines. Instead of being forced to chain many methods and advanced database features on a single line, we can break them up over as many lines as needed. This increases readability, which improves the ease of maintenance.
 
