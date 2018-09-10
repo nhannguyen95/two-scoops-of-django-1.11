@@ -56,7 +56,29 @@ class Cart(models.Model)
 {{ user.cart... }}
 {% endfor %}
 
-Solution is in view, you return User.objects.all().selected_related('cart') insteach of just User.objects.all()
+Solution is in view, you return User.objects.all().select_related('cart') insteach of just User.objects.all(). Short explanation:
+
+-------------NO select_relate()-------------
+# Hit the db: SELECT * FROM User WHERE id = 1;
+user = User.objects.get(id=1)
+
+# Hit the db again: SELECT * FROM Cart, User WHERE User.cart = cart;
+cart = user.cart
+
+# Assume later accesses to `user.cart`, hit the db multiple times
+---------------------------------------------
+
+---------------select_relate()-------------
+# Hit the db: Doing some SQL join
+user = User.objects.get(id=1).select_related('cart')
+
+# Doesn't hit the db
+cart = user.cart
+
+# Later accesses to `user.cart` require no db hit
+---------------------------------------------
+
+So the idea is doing a single more complex query but means later use of foreign-key relationships won’t require database queries.
 ```
 
 - Projects that handle a lot of image or data processing increase the performance of their site by taking the image processing out of templates and into views, models, helper methods, or asynchronous messages queues like Celery or Django Channels.
