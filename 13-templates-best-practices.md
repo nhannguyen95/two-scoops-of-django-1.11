@@ -65,7 +65,8 @@ user = User.objects.get(id=1)
 # Hit the db again: SELECT * FROM Cart, User WHERE User.cart = cart;
 cart = user.cart
 
-# Assume later accesses to `user.cart`, hit the db multiple times
+# FYI: later accesses to `user.cart` will not hit the db
+cart = user.cart  # Get the result that is cached when called the first time
 ---------------------------------------------
 
 ---------------select_relate()-------------
@@ -74,8 +75,6 @@ user = User.objects.get(id=1).select_related('cart')
 
 # Doesn't hit the db
 cart = user.cart
-
-# Later accesses to `user.cart` require no db hit
 ---------------------------------------------
 
 So the idea is doing a single more complex query but means later use of foreign-key relationships won’t require database queries.
