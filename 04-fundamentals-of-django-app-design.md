@@ -1,4 +1,4 @@
--  e art of creating and maintaining a good Django app is that it should follow the truncated Unix philosophy according to Douglas McIlroy: ‘Write programs that do one thing and do it well.
+-  The art of creating and maintaining a good Django app is that it should follow the truncated Unix philosophy according to Douglas McIlroy: ‘Write programs that do one thing and do it well.
 
 - As a general rule, the app’s name should be a plural version of the app’s main model, but there are many good exceptions to this rule, blog being one of the most common ones.
 
@@ -25,7 +25,7 @@
   - decorators.py - Where we like to locate our decorators.
   - db/ - A package used in many projects for any custom model  elds or components.
   - exceptions.py
-  - fields.py - commonly used for form  elds, but is sometimes used for model  elds when there isn’t enough field code to justify creating a db/ package.
+  - fields.py - commonly used for form fields, but is sometimes used for model  elds when there isn’t enough field code to justify creating a db/ package.
   - factories.py - Where we like to place our test data factories.
   - helpers.py - What we call helper functions. These are where we put code extracted from view and models to make them lighter. Synonymous with utils.py.
   - managers.py - When models.py grows too large, a common remedy is to move any custom model managers to this module.
