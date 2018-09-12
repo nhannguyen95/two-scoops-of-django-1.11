@@ -121,6 +121,8 @@ class SomeListView(TitleSearchMixin, ListView):
 ```
 
 ---
+
+```
 class HeroCreateView(CreateView):  # Create object through a form
   form_class = HeroModelForm  # Displayed form
   
@@ -129,6 +131,7 @@ class HeroCreateView(CreateView):  # Create object through a form
                               
   http_method_names = []      # Method allowed on this view, can be helpful in dispatch, or
                               # specifying the methods you want to use in this view.
+```
                               
 ---
 
