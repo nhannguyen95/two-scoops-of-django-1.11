@@ -119,7 +119,17 @@ class SomeListView(TitleSearchMixin, ListView):
   <button type="submit">search</button>
 </form>
 ```
+
+---
+class HeroCreateView(CreateView):  # Create object through a form
+  form_class = HeroModelForm  # Displayed form
   
+  model = HeroModel           # If form's valid, data in form will be used to create this model.
+                              # So normally `form_class` is ModelForm version of `model`.
+                              
+  http_method_names = []      # Method allowed on this view, can be helpful in dispatch, or
+                              # specifying the methods you want to use in this view.
+                              
 ---
 
 - Additional links:
